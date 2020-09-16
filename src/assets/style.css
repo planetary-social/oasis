@@ -79,6 +79,7 @@ main {
   background-color: white;
   height: 60px;
   padding-left: 20px;
+  border-bottom: 5px solid #D7D3EB;
 }
 
 /* https://www.desmos.com/calculator/3elcf5cwhn */
