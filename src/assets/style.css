@@ -73,6 +73,14 @@ main {
   margin-bottom: var(--size-0);
 }
 
+#app-header {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 60px;
+  padding-left: 20px;
+}
+
 /* https://www.desmos.com/calculator/3elcf5cwhn */
 h1 {
   font-size: 133%;
@@ -306,6 +314,7 @@ section audio {
   }
 
   body {
+    background-color: #484078;
     width: 100%;
     max-width: var(--measure);
     margin: 0;
@@ -317,9 +326,12 @@ nav {
 }
 
 nav > ul > li > a {
-  color: var(--fg);
+  color: white;
   text-decoration: none;
-  font-weight: bold;
+}
+
+nav > ul > li > a:hover {
+  color: #FFD400;
 }
 
 nav > ul > li > a.current {
@@ -327,13 +339,31 @@ nav > ul > li > a.current {
 }
 
 section {
+  transition: all 200ms ease;
+  position: relative;
   padding: var(--size-0);
-  border-radius: var(--common-radius);
-  margin: var(--size-0) 0;
+  border-radius: 20px;
+  border-bottom: 5px solid #D7D3EB;
+  margin: 20px 0;
   word-wrap: break-word;
   background: var(--bg);
   width: 100%;
   box-sizing: border-box;
+}
+
+section.post:hover {
+  transform: translateY(-5px);
+}
+
+section.post:last-child:after {
+  content: "";
+  width: 20px;
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  bottom: -15px;
+  background-color: #484078;
+  border-top: 5px solid var(--bg-selection);
 }
 
 section > header {
@@ -361,7 +391,7 @@ section > header > div {
 section header a > .avatar {
   width: var(--line);
   height: var(--line);
-  border-radius: var(--common-radius);
+  border-radius: 50%;
   margin-right: var(--size--2);
 }
 
@@ -534,24 +564,30 @@ hr {
 
 /* sidebar only appears on big screens */
 @media (min-width: calc(45rem)) {
-  body > nav > ul {
+  #feed-wrapper > nav > ul {
     justify-content: right;
     flex-direction: column;
     margin-right: var(--size-1);
     position: sticky;
     top: var(--size-0);
   }
-  body > nav > ul > li {
+  #feed-wrapper > nav > ul > li {
     margin-bottom: var(--size-0);
   }
   main {
     width: 100%;
     max-width: var(--measure);
   }
-  body {
+  #feed-wrapper {
     display: flex;
     justify-content: center;
     max-width: none;
+  }
+  body {
+    display: flex;
+    justify-content: flex-start;
+    max-width: none;
+    flex-direction: column;
   }
 }
 
@@ -570,6 +606,9 @@ hr {
 .indent {
   padding-left: 1rem;
   border-left: var(--size--2) solid var(--bg-selection);
+  margin-top: -26px;
+  padding-top: 7px;
+  margin-left: 20px;
 }
 
 .theme-preview {
